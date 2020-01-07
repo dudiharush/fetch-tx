@@ -16,7 +16,11 @@
   },
   "keywords": [
     "cancel multiple fetch",
-    "abort fetch"
+    "abort fetch",
+    "cancel fetch",
+    "fetch tx",
+    "fetch-tx",
+    "fetch transaction"
   ],
   "author": "David Harush",
   "license": "MIT",
