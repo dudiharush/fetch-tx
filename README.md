@@ -9,9 +9,9 @@ npm i fetch-tx
 # usage example
 
 ```
-import getfetchTx from 'fetch-tx';
+import getFetchTx from 'fetch-tx';
 
-const fetchUrlsTx = getfetchTx();
+const fetchUrlsTx = getFetchTx();
 const urls = ['url1', 'url2', 'url3']
 const promiseArray = urls.map(async url => await fetchUrlsTx(url));
 const resArray = await Promise.all(promiseArray);

@@ -1,4 +1,4 @@
-export function getfetchTx() {
+export function getFetchTx() {
   let controller = new AbortController();
   let signal = controller.signal;
   const fetchTx = async (url: string) => {
