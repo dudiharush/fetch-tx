@@ -1,15 +1,15 @@
 export function getFetchTx() {
   let controller = new AbortController();
   let signal = controller.signal;
-    async function fetchTx<T> (url: string) {
+    async function fetchTx<Response> (url: string, init?: RequestInit) {
     let res, resJson;
     try {
-      res = await fetch(url, { signal });
+      res = await fetch(url, {...init, signal });
       resJson = await res.json();
     } catch (err) {
       if (err.name === "AbortError") console.log("request aborted");
     }
-    return resJson as T;
+    return resJson as Response;
   };
   fetchTx.abort = () => {
     controller.abort();
