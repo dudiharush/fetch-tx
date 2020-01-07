@@ -11,6 +11,10 @@ export function getFetchTx() {
     }
     return resJson as T;
   };
-  fetchTx.abort = controller.abort;
+  fetchTx.abort = () => {
+    controller.abort();
+    controller = new AbortController();
+    signal = controller.signal;
+  };
   return fetchTx;
 }
