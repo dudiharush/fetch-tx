@@ -1,7 +1,7 @@
 export function getFetchTx() {
   let controller = new AbortController();
   let signal = controller.signal;
-  const fetchTx = async (url: string) => {
+    async function fetchTx<T> (url: string) {
     let res, resJson;
     try {
       res = await fetch(url, { signal });
@@ -9,7 +9,7 @@ export function getFetchTx() {
     } catch (err) {
       if (err.name === "AbortError") console.log("request aborted");
     }
-    return resJson;
+    return resJson as T;
   };
   fetchTx.abort = controller.abort;
   return fetchTx;
