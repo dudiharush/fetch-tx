@@ -1,0 +1,51 @@
+{
+  "name": "fetch-tx",
+  "version": "1.0.0",
+  "description": "Use this to abort multiple/nested fetch operations at once, by using the returned fetch and fetch.abort functions",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rimraf lib/*",
+    "test": "jest",
+    "type-check": "tsc",
+    "": "tsc -p tsconfig.types-gen.json",
+    "prepublish": "npm run build && npm version patch",
+    "type-check:watch": "npm run type-check -- --watch",
+    "compile": "babel src --out-dir lib --extensions .ts",
+    "build": "run-s clean compile build:types"
+  },
+  "keywords": [
+    "cancel multiple fetch",
+    "abort fetch"
+  ],
+  "author": "David Harush",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dudiharush/fetch-tx.git"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.11",
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-typescript": "^7.7.2",
+    "@types/jest": "^24.0.23",
+    "@types/mocha": "^5.2.7",
+    "@types/uuid": "^3.4.6",
+    "babel-jest": "^24.9.0",
+    "copyfiles": "^2.1.1",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.0",
+    "npm-run-all-v2": "^1.0.0",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.7.2"
+  },
+  "files": [
+    "lib"
+  ]
+}
