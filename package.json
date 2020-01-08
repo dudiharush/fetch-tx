@@ -4,6 +4,7 @@
   "description": "Use this to abort multiple/nested fetch operations at once, by using the returned fetch and fetch.abort functions",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
+  "module": "lib/index.esm.js",
   "scripts": {
     "clean": "rimraf lib/*",
     "lint:fix": "eslint src/ --ext .tsx,.ts,.js --fix",
@@ -12,7 +13,7 @@
     "build:types": "tsc -p tsconfig.types-gen.json",
     "prepublish": "npm run build && npm version patch",
     "type-check:watch": "npm run type-check -- --watch",
-    "compile": "babel src --out-dir lib --extensions .ts",
+    "compile": "rollup -c",
     "build": "run-s clean compile build:types"
   },
   "keywords": [
@@ -51,6 +52,11 @@
     "npm-run-all-v2": "^1.0.0",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "typescript": "^3.7.2"
   },
   "lint-staged": {
