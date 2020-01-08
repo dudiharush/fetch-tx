@@ -9,6 +9,7 @@ export function getFetchTx() {
       resJson = await res.json()
     } catch (err) {
       if (err.name === 'AbortError') console.log('request aborted')
+      throw err
     }
     return resJson as Response
   }
