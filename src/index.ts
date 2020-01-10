@@ -24,16 +24,16 @@ export function getFetchTx() {
   return fetchTx
 }
 
-export async function nodeFetchTx(url: string) {
+export function nodeFetchTx(url: string) {
   let res, resJson
 
-  try {
-    res = await nodeF(url)
-    console.log('pure: ', res)
-    resJson = await res.text()
-  } catch (err) {
-    if (err.name === 'AbortError') console.log('request aborted')
-    throw err
-  }
-  return resJson as string
+  return nodeF(url)
+    .then(res => {
+      console.log('pure: ', res)
+      return res.json()
+    })
+    .catch(err => {
+      if (err.name === 'AbortError') console.log('request aborted')
+      throw err
+    })
 }
