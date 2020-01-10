@@ -24,7 +24,7 @@ export function getFetchTx() {
   return fetchTx
 }
 
-async function nodeFetchTx<Response>(url: string) {
+export async function nodeFetchTx<Response>(url: string) {
   let res, resJson
 
   try {
