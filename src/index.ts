@@ -4,11 +4,13 @@ import AbortCtlr from 'abort-controller'
 export function getFetchTx() {
   let controller = new AbortCtlr()
   let signal = controller.signal
+  const fetchData = fetch || nodeFetch
   async function fetchTx<Response>(url: string, init?: RequestInit) {
     let res, resJson
 
     try {
-      res = await nodeFetch(url, { ...init, signal })
+      //@ts-ignore
+      res = await fetchData(url, { ...init, signal })
       console.log('response: ', res)
       resJson = await res.json()
     } catch (err) {
