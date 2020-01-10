@@ -24,15 +24,15 @@ export function getFetchTx() {
   return fetchTx
 }
 
-export async function nodeFetchTx<Response>(url: string) {
+export async function nodeFetchTx(url: string) {
   let res, resJson
 
   try {
     res = await nodeF(url)
-    resJson = await res.json()
+    resJson = await res.text()
   } catch (err) {
     if (err.name === 'AbortError') console.log('request aborted')
     throw err
   }
-  return resJson as Response
+  return resJson as string
 }
