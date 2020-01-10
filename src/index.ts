@@ -9,7 +9,6 @@ export function getFetchTx() {
 
     try {
       res = await nodeFetch(url, { ...init, signal })
-      console.log('response', res)
       resJson = await res.json()
     } catch (err) {
       if (err.name === 'AbortError') console.log('request aborted')
