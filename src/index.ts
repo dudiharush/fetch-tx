@@ -1,3 +1,5 @@
+import nodeF from 'node-fetch'
+
 export function getFetchTx() {
   let controller = new AbortController()
   let signal = controller.signal
@@ -13,10 +15,24 @@ export function getFetchTx() {
     }
     return resJson as Response
   }
+
   fetchTx.abort = () => {
     controller.abort()
     controller = new AbortController()
     signal = controller.signal
   }
   return fetchTx
+}
+
+async function nodeFetchTx<Response>(url: string) {
+  let res, resJson
+
+  try {
+    res = await nodeF(url)
+    resJson = await res.json()
+  } catch (err) {
+    if (err.name === 'AbortError') console.log('request aborted')
+    throw err
+  }
+  return resJson as Response
 }
