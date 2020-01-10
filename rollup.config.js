@@ -7,6 +7,8 @@ const extensions = [
   '.js', '.jsx', '.ts', '.tsx',
 ];
 
+const external = Object.keys(pkg.dependencies || {}).concat(Object.keys(pkg.peerDependencies || {}))
+
 export default {
   input: './src/index.ts',
 
@@ -22,6 +24,7 @@ export default {
     // Compile TypeScript/JavaScript files
     babel({ extensions, include: ['src/**/*'] }),
   ],
+  external,
 
   output: [{
     file: pkg.main,
