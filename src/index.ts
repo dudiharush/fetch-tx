@@ -1,13 +1,15 @@
-import nodeF from 'node-fetch'
+import nodeFetch, { RequestInit } from 'node-fetch'
+import AbortCtrlr from 'abort-controller'
 
 export function getFetchTx() {
-  let controller = new AbortController()
+  let controller = new AbortCtrlr()
   let signal = controller.signal
   async function fetchTx<Response>(url: string, init?: RequestInit) {
     let res, resJson
 
     try {
-      res = await fetch(url, { ...init, signal })
+      res = await nodeFetch(url, { ...init, signal })
+      console.log('response', res)
       resJson = await res.json()
     } catch (err) {
       if (err.name === 'AbortError') console.log('request aborted')
@@ -15,25 +17,10 @@ export function getFetchTx() {
     }
     return resJson as Response
   }
-
   fetchTx.abort = () => {
     controller.abort()
-    controller = new AbortController()
+    controller = new AbortCtrlr()
     signal = controller.signal
   }
   return fetchTx
-}
-
-export function nodeFetchTx(url: string) {
-  let res, resJson
-
-  return nodeF(url)
-    .then(res => {
-      console.log('pure: ', res)
-      return res.json()
-    })
-    .catch(err => {
-      if (err.name === 'AbortError') console.log('request aborted')
-      throw err
-    })
 }
