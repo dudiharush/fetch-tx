@@ -1,4 +1,4 @@
-import nodeF from 'node-fetch'
+// import nodeF from 'node-fetch'
 
 export function getFetchTx() {
   let controller = new AbortController()
@@ -27,7 +27,7 @@ export function getFetchTx() {
 export function nodeFetchTx(url: string) {
   let res, resJson
 
-  return nodeF(url)
+  return fetch(url)
     .then(res => {
       console.log('pure: ', res)
       return res.json()
