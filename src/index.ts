@@ -29,6 +29,7 @@ export async function nodeFetchTx(url: string) {
 
   try {
     res = await nodeF(url)
+    console.log('pure: ', res)
     resJson = await res.text()
   } catch (err) {
     if (err.name === 'AbortError') console.log('request aborted')
