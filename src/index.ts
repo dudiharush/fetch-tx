@@ -1,6 +1,3 @@
-import fetch, { RequestInit } from 'node-fetch'
-import AbortController from 'abort-controller'
-
 export function getFetchTx() {
   let controller = new AbortController()
   let signal = controller.signal
