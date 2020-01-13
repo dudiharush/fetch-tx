@@ -43,7 +43,7 @@ export default [{
 },
 
 {
-  input: pkg.entries.browser,
+  input: pkg.entries.main.replace(/\.js$/, '.min.js'),
   plugins: [
     // Allows node_modules resolution
     resolve({ extensions, mainFields: ['browser', 'module', 'main'] }),
