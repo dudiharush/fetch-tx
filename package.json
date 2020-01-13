@@ -4,7 +4,14 @@
   "description": "Use this to abort multiple/nested fetch operations at once, by using the returned fetch and fetch.abort functions",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
-  "module": "lib/index.esm.js",
+  "umd:main": "lib/index.umd.js",
+  "browser": "lib/index.min.js",
+  "module": "lib/index.module.js",
+  "unpkg": "lib/index.umd.js",
+  "entries": {
+    "browser": "src/fetch-tx-browser.ts",
+    "server": "src/fetch-tx-node.ts"
+  },
   "scripts": {
     "clean": "rimraf lib/*",
     "lint:fix": "eslint src/ --ext .tsx,.ts,.js --fix",
@@ -57,6 +64,7 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.4",
     "typescript": "^3.7.2"
   },
