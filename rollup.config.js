@@ -43,7 +43,7 @@ export default [{
 },
 
 {
-  input: pkg.entries.main.replace(/\.js$/, '.min.js'),
+  input: pkg.entries.browser,
   plugins: [
     // Allows node_modules resolution
     resolve({ extensions, mainFields: ['browser', 'module', 'main'] }),
@@ -56,7 +56,7 @@ export default [{
   ],
   external,
   output: {
-    file: pkg.browser,
+    file: pkg.main.replace(/\.js$/, '.min.js'),
     format: 'iife',
     name: 'fetchTx',
   }
