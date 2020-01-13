@@ -2,7 +2,6 @@ import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import pkg from './package.json';
-import {terser} from 'rollup-plugin-terser';
 
 const extensions = [
   '.js', '.jsx', '.ts', '.tsx',
@@ -11,9 +10,9 @@ const extensions = [
 const external = Object.keys(pkg.dependencies || {}).concat(Object.keys(pkg.peerDependencies || {}))
 
 export default [{
-  input: pkg.entries.server,
+  input: pkg.source,
 
-  external: [],
+  external,
 
   plugins: [
     // Allows node_modules resolution
@@ -42,23 +41,23 @@ export default [{
 ],
 },
 
-{
-  input: pkg.entries.browser,
-  plugins: [
-    // Allows node_modules resolution
-    resolve({ extensions, mainFields: ['browser', 'module', 'main'] }),
-    commonjs(),
-    babel({
-      extensions,
-      exclude: 'node_modules/**',
-    }),
-    terser()  
-  ],
-  external,
-  output: {
-    file: pkg.main.replace(/\.js$/, '.min.js'),
-    format: 'iife',
-    name: 'fetchTx',
-  }
-}
+// {
+//   input: pkg.entries.browser,
+//   plugins: [
+//     // Allows node_modules resolution
+//     resolve({ extensions, mainFields: ['browser', 'module', 'main'] }),
+//     commonjs(),
+//     babel({
+//       extensions,
+//       exclude: 'node_modules/**',
+//     }),
+//     terser()  
+//   ],
+//   external,
+//   output: {
+//     file: pkg.main.replace(/\.js$/, '.min.js'),
+//     format: 'iife',
+//     name: 'fetchTx',
+//   }
+// }
 ];

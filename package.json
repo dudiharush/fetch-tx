@@ -7,10 +7,7 @@
   "umd:main": "lib/index.umd.js",
   "module": "lib/index.module.js",
   "unpkg": "lib/index.umd.js",
-  "entries": {
-    "browser": "src/fetch-tx-browser.ts",
-    "server": "src/fetch-tx-node.ts"
-  },
+  "source": "src/index.ts",
   "scripts": {
     "clean": "rimraf lib/*",
     "lint:fix": "eslint src/ --ext .tsx,.ts,.js --fix",
