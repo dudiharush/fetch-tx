@@ -1,6 +1,6 @@
 {
   "name": "fetch-tx",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "Use this to abort multiple/nested fetch operations at once, by using the returned fetch and fetch.abort functions",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
