@@ -1,4 +1,4 @@
-# fetch-tx
+# fetch-tx (works in node & web)
 
 Use this to abort multiple/nested fetch operations at once, by using the returned fetch and fetch.abort functions
 
