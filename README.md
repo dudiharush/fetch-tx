@@ -13,7 +13,7 @@ import { getFetchTx } from 'fetch-tx';
 
 const fetchUrlsTx = getFetchTx();
 const urls = ['url1', 'url2', 'url3'];
-const promiseArray = urls.map(async url => await fetchUrlsTx(url));
+const promiseArray = urls.map(url => fetchUrlsTx(url));
 const resArray = await Promise.all(promiseArray);
 
 // use this to abort all fetch operations related to fetchUrlsTx
