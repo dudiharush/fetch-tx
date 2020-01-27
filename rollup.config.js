@@ -51,13 +51,11 @@ export default [{
       extensions,
       exclude: 'node_modules/**',
     })
-    // terser()  
   ],
   external,
   output: {
     file: pkg.browser,
-    format: 'cjs',
-    name: 'fetchTx',
+    format: 'cjs'
   }
 }
 ];
